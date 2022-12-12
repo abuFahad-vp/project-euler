@@ -1,32 +1,34 @@
+using DataStructures
 
-f(n) = sum(factorial.(digits(n)));
-sf(n) = sum(digits(n))
+function factSum(n)
 
-# g(i) = n
-# sf(n) = i
+    d = 0
+    for i in n
+        d += factorial(i)
+    end
+    return sum(digits(d))
+end
 
-sf(f(25))
-sf(f(52))
 
-# g(5) = 25
-# sf(25) = 5
-# f(x) = 25
+function main3()
 
-f_s = f.(1:25)
+    g_s = Dict()
+    for i in 1:10000000
+        gs = factSum(digits(i))
 
-g_s = Dict()
+        if gs in keys(g_s) && i > g_s[gs]
+            continue
+        end
 
-for i in 1:25
-
-    println("$i -> ", sf(f_s[i]))
-
-    if(!(i in keys(g)))
-        g_s[i] = sf(f_s[i])
+        if gs > 150
+            continue
+        end
+        g_s[gs] = i
     end
 
+    for i in sort(collect(keys(g_s)))
+        println("$i - > $(g_s[i]) -> $(sum(digits(g_s[i])))")
+    end
 end
 
-function g(n)
-    return g_s[n]
-end
-
+@time main3() 
