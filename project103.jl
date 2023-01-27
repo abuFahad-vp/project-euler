@@ -4,9 +4,14 @@ using Combinatorics
 function main()
 
 
-    # S::Vector = [11, 18, 19, 20, 22, 25]
-    # S::Vector = [20, 31, 38, 39, 40, 42, 45]
-    # S::Vector = [39,20+39, 31+39, 38+39, 39+39, 40+39, 42+39, 45+39]
+    S::Vector = [11, 18, 19, 20, 22, 25]
+    # S::Vector = [310, 465, 543, 582, 602, 613, 620, 621, 622, 624, 627]
+    # n = 12
+    # S::Vector = [613, 923, 1078, 1156, 1195, 1215, 1226, 1233, 1234, 1235, 1237, 1240]
+    # b = 613
+    # S .+= b
+    # pushfirst!(S,b)
+    # println(S)
 
     ans = collect(powerset(S))
     popfirst!(ans)
